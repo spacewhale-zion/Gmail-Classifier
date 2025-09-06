@@ -5,6 +5,8 @@ export interface Email {
   body: string;
   receivedAt: Date;
   category?: string;
+  externalUrl?: string; // optional: URL for external email
+
 }
 
 

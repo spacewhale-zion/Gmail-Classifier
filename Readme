@@ -1,0 +1,126 @@
+Gmail Classifier
+Gmail Classifier is a full-stack web application designed to help users categorize their Gmail emails efficiently. It fetches emails in real-time, allows users to create custom categories based on keywords, and provides a clean interface for managing and viewing classified emails. The entire application is containerized with Docker for easy setup and deployment.
+
+✨ Key Features
+Google OAuth 2.0 Integration: Securely log in with your Google account to grant read-only access to your Gmail inbox.
+
+Real-Time Email Sync: The backend polls your Gmail account periodically and pushes updates to the frontend in real-time using Socket.IO.
+
+Custom Categorization: Create, edit, and delete custom categories with specific keywords to automatically filter and classify your emails.
+
+Dynamic Filtering and Search: Instantly search through your emails by subject, sender, or content, and filter them by your custom categories.
+
+Dockerized Environment: The entire application (frontend and backend) is containerized, allowing for a consistent and simple setup with a single command.
+
+Modern Tech Stack: Built with a robust MERN-style stack (MongoDB, Express, React, Node.js) and enhanced with TypeScript, Vite, and Tailwind CSS for a fast and reliable user experience.
+
+🚀 Future Enhancements: NLP Classification
+The next major feature planned for this project is the integration of a Natural Language Processing (NLP) model.
+
+Automatic Classification: Instead of relying solely on keywords, a machine learning model will be trained to analyze the content and context of each email to automatically assign it to the most relevant category (e.g., "Promotions," "Social," "Work," "Urgent").
+
+Smarter Suggestions: The system will learn from user categorizations to improve its accuracy and suggest new, relevant keywords for existing categories.
+
+🛠️ Tech Stack
+Frontend:
+
+React: A JavaScript library for building user interfaces.
+
+TypeScript: For static typing and improved developer experience.
+
+Vite: A blazingly fast build tool for modern web development.
+
+Tailwind CSS: A utility-first CSS framework for rapid UI development.
+
+Socket.IO Client: For real-time communication with the backend.
+
+React Router: For client-side routing.
+
+Backend:
+
+Node.js: A JavaScript runtime for the server.
+
+Express.js: A web application framework for Node.js.
+
+MongoDB: A NoSQL database for storing user and email data.
+
+Mongoose: An ODM library for MongoDB and Node.js.
+
+Passport.js (Google OAuth 2.0): For authentication.
+
+Socket.IO: For enabling real-time, bidirectional communication.
+
+Google APIs: For interacting with the Gmail API.
+
+📂 Project Structure
+The project is organized in a monorepo-style structure:
+
+/
+├── backend_/         # Node.js, Express, MongoDB server
+├── frontend/         # React, TypeScript, Vite client
+├── docker-compose.yml # Orchestrates both services
+└── README.md         # This file
+
+⚙️ Setup and Installation
+Prerequisites
+Node.js (v18 or later)
+
+Docker and Docker Compose
+
+A Google Cloud Platform project with OAuth 2.0 credentials enabled.
+
+A MongoDB database connection string.
+
+1. Clone the Repository
+git clone [https://github.com/your-username/Gmail-Classifier.git](https://github.com/your-username/Gmail-Classifier.git)
+cd Gmail-Classifier
+
+2. Environment Variables
+Create a .env file inside the backend_ directory and add the following variables. Do not commit this file.
+
+File: backend_/.env
+
+# MongoDB
+MONGO_URI=your_mongodb_connection_string
+
+# Google OAuth Credentials
+CLIENT_ID=your_google_client_id
+CLIENT_SECRET=your_google_client_secret
+
+# Application URLs
+FRONTEND_URL=http://localhost:5173
+CALLBACK_URL=http://localhost:5000/auth/google/callback
+
+# Session Secret
+SESSION_SECRET=replace_with_a_long_random_secret_string
+
+3. Local Development (Without Docker)
+Install Dependencies:
+
+# In the root directory, for the backend
+cd backend_
+npm install
+
+# In a new terminal, for the frontend
+cd frontend
+npm install
+
+Run the Application:
+
+# Run the backend server (from /backend_)
+npm run dev
+
+# Run the frontend dev server (from /frontend)
+npm run dev
+
+4. Running with Docker
+Once you have configured the environment variables in docker-compose.yml (or created a root .env file), you can build and run the entire application with one command from the root directory.
+
+docker-compose up --build
+
+The frontend will be available at http://localhost:5173.
+
+The backend will be available at http://localhost:5000.
+
+To stop the containers, press Ctrl + C.
+

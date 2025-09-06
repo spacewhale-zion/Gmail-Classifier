@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EmailCard from './EmailCard';
 
-// import type { Email } from '../types/Email';
-// src/types/Email.ts
-export interface Email {
-  id: string;
-  subject: string;
-  from: string;
-  body: string;
-  category?: string; // optional if you want
-}
+import type { Email } from '../types';
 
 const EmailList: React.FC = () => {
   const [emails, setEmails] = useState<Email[]>([]);

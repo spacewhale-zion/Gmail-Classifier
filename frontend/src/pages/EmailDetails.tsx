@@ -2,14 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
   import { io } from "socket.io-client";
 
-export interface Email {
-  id: string;
-  subject: string;
-  from: string;
-  body: string; // can contain HTML
-  category?: string;
-  externalUrl?: string; // optional: URL for external email
-}
+import type { Email } from "../types";
 
 const EmailDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
