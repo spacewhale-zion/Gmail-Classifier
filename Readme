@@ -1,56 +1,57 @@
-Gmail Classifier
-Gmail Classifier is a full-stack web application designed to help users categorize their Gmail emails efficiently. It fetches emails in real-time, allows users to create custom categories based on keywords, and provides a clean interface for managing and viewing classified emails. The entire application is containerized with Docker for easy setup and deployment.
+<div align="center">
+<img src="https://www.google.com/search?q=https://raw.githubusercontent.com/spacewhale-zion/Gmail-Classifier/main/frontend/public/vite.svg" alt="logo" width="120" height="120">
+<h1>Gmail Classifier</h1>
+<p>
+An intelligent, real-time email categorization tool built with the MERN stack and containerized with Docker.
+</p>
+
+<p>
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/status-in%2520progress-yellow.svg" alt="Status">
+</p>
+</div>
+
+Gmail Classifier is a full-stack web application designed to help users categorize their Gmail emails efficiently. It fetches emails in real-time, allows users to create custom categories based on keywords, and provides a clean interface for managing and viewing classified emails.
 
 ✨ Key Features
-Google OAuth 2.0 Integration: Securely log in with your Google account to grant read-only access to your Gmail inbox.
+🔐 Secure Google OAuth 2.0: Log in securely with your Google account to grant read-only access to your Gmail.
 
-Real-Time Email Sync: The backend polls your Gmail account periodically and pushes updates to the frontend in real-time using Socket.IO.
+🔄 Real-Time Email Sync: The backend polls your Gmail and pushes updates to the frontend instantly using Socket.IO.
 
-Custom Categorization: Create, edit, and delete custom categories with specific keywords to automatically filter and classify your emails.
+📂 Custom Categorization: Create, edit, and delete custom categories with specific keywords for automatic email filtering.
 
-Dynamic Filtering and Search: Instantly search through your emails by subject, sender, or content, and filter them by your custom categories.
+🔍 Dynamic Filtering & Search: Instantly search emails by subject, sender, or content and filter by your custom categories.
 
-Dockerized Environment: The entire application (frontend and backend) is containerized, allowing for a consistent and simple setup with a single command.
+🐳 Dockerized Environment: A consistent, simple setup for both frontend and backend services with a single command.
 
-Modern Tech Stack: Built with a robust MERN-style stack (MongoDB, Express, React, Node.js) and enhanced with TypeScript, Vite, and Tailwind CSS for a fast and reliable user experience.
+💻 Modern Tech Stack: Built with a robust MERN-style stack and enhanced with TypeScript, Vite, and Tailwind CSS.
 
 🚀 Future Enhancements: NLP Classification
 The next major feature planned for this project is the integration of a Natural Language Processing (NLP) model.
 
-Automatic Classification: Instead of relying solely on keywords, a machine learning model will be trained to analyze the content and context of each email to automatically assign it to the most relevant category (e.g., "Promotions," "Social," "Work," "Urgent").
+🧠 Automatic Classification: A machine learning model will analyze email content and context to automatically assign it to the most relevant category (e.g., "Promotions," "Social," "Work," "Urgent").
 
-Smarter Suggestions: The system will learn from user categorizations to improve its accuracy and suggest new, relevant keywords for existing categories.
+💡 Smarter Suggestions: The system will learn from user actions to improve its accuracy and suggest new keywords for your categories.
 
 🛠️ Tech Stack
-Frontend:
+The application is built with a modern, full-stack JavaScript/TypeScript toolchain.
 
-React: A JavaScript library for building user interfaces.
+Category
 
-TypeScript: For static typing and improved developer experience.
+Technology
 
-Vite: A blazingly fast build tool for modern web development.
+Frontend
 
-Tailwind CSS: A utility-first CSS framework for rapid UI development.
+React, TypeScript, Vite, Tailwind CSS, Socket.IO Client, React Router
 
-Socket.IO Client: For real-time communication with the backend.
+Backend
 
-React Router: For client-side routing.
+Node.js, Express.js, MongoDB, Mongoose, Passport.js (Google OAuth), Socket.IO
 
-Backend:
+DevOps
 
-Node.js: A JavaScript runtime for the server.
-
-Express.js: A web application framework for Node.js.
-
-MongoDB: A NoSQL database for storing user and email data.
-
-Mongoose: An ODM library for MongoDB and Node.js.
-
-Passport.js (Google OAuth 2.0): For authentication.
-
-Socket.IO: For enabling real-time, bidirectional communication.
-
-Google APIs: For interacting with the Gmail API.
+Docker, Docker Compose
 
 📂 Project Structure
 The project is organized in a monorepo-style structure:
@@ -58,27 +59,32 @@ The project is organized in a monorepo-style structure:
 /
 ├── backend_/         # Node.js, Express, MongoDB server
 ├── frontend/         # React, TypeScript, Vite client
-├── docker-compose.yml # Orchestrates both services
+├── .env.example      # Example environment variables
+├── docker-compose.yml# Orchestrates both services
 └── README.md         # This file
 
-⚙️ Setup and Installation
+⚙️ Getting Started
+Follow these instructions to get the project up and running on your local machine.
+
 Prerequisites
 Node.js (v18 or later)
 
 Docker and Docker Compose
 
-A Google Cloud Platform project with OAuth 2.0 credentials enabled.
+A Google Cloud Platform project with OAuth 2.0 credentials.
 
-A MongoDB database connection string.
+A MongoDB database (local or cloud).
 
 1. Clone the Repository
-git clone [https://github.com/your-username/Gmail-Classifier.git](https://github.com/your-username/Gmail-Classifier.git)
+git clone [https://github.com/spacewhale-zion/Gmail-Classifier.git](https://github.com/spacewhale-zion/Gmail-Classifier.git)
 cd Gmail-Classifier
 
-2. Environment Variables
-Create a .env file inside the backend_ directory and add the following variables. Do not commit this file.
+2. Configure Environment Variables
+Create a .env file in the root directory of the project by copying the example file:
 
-File: backend_/.env
+cp .env.example .env
+
+Now, open the .env file and add your credentials:
 
 # MongoDB
 MONGO_URI=your_mongodb_connection_string
@@ -89,38 +95,44 @@ CLIENT_SECRET=your_google_client_secret
 
 # Application URLs
 FRONTEND_URL=http://localhost:5173
-CALLBACK_URL=http://localhost:5000/auth/google/callback
 
 # Session Secret
 SESSION_SECRET=replace_with_a_long_random_secret_string
 
-3. Local Development (Without Docker)
-Install Dependencies:
-
-# In the root directory, for the backend
-cd backend_
-npm install
-
-# In a new terminal, for the frontend
-cd frontend
-npm install
-
-Run the Application:
-
-# Run the backend server (from /backend_)
-npm run dev
-
-# Run the frontend dev server (from /frontend)
-npm run dev
-
-4. Running with Docker
-Once you have configured the environment variables in docker-compose.yml (or created a root .env file), you can build and run the entire application with one command from the root directory.
+3. Running with Docker (Recommended)
+With Docker and your .env file configured, you can start the entire application with a single command from the root directory.
 
 docker-compose up --build
 
-The frontend will be available at http://localhost:5173.
+The Frontend will be available at http://localhost:5173.
 
-The backend will be available at http://localhost:5000.
+The Backend will be available at http://localhost:5000.
 
-To stop the containers, press Ctrl + C.
+To stop the containers, press Ctrl + C in the terminal.
+
+4. Local Development (Without Docker)
+<details>
+<summary>Click to view local setup instructions</summary>
+
+1. Install Backend Dependencies:
+
+cd backend_
+npm install
+
+2. Install Frontend Dependencies:
+
+cd ../frontend
+npm install
+
+3. Run the Application:
+
+In one terminal, start the backend server (from /backend_):
+
+npm run dev
+
+In another terminal, start the frontend dev server (from /frontend):
+
+npm run dev
+
+</details>
 
