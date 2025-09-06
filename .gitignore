@@ -2,17 +2,14 @@
 # Node.js dependencies
 # -----------------------
 node_modules/
-client/node_modules/
-server/node_modules/
+frontend/node_modules/
+backend_/node_modules/
 
 # -----------------------
 # Build / output
 # -----------------------
 dist/
-server/dist/
-client/build/
-client/.next/
-client/out/
+frontend/dist/
 coverage/
 
 # -----------------------
@@ -36,8 +33,8 @@ pnpm-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
-server/.env
-client/.env
+backend_/.env
+frontend/.env
 
 # -----------------------
 # Editor / OS files
@@ -55,4 +52,3 @@ Thumbs.db
 # -----------------------
 .cache/
 .parcel-cache/
-.next/
